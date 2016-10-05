@@ -56,7 +56,8 @@ list_line = list_indent:list_mark+ _ l:line {return list_line(l, list_indent.len
 list_mark = "-"
 
 // line
-line = strings:string_without_eol+ EOL_or_EOI {return line(strings)}
+line = strings:string_without_eol+ EOL_or_EOI {return line(strings)} / blank_line
+blank_line = EOL {return line("")}
 //    - string without eol
 string_without_eol = bold / pure_string
 //    - bold
